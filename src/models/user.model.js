@@ -51,7 +51,7 @@ userSchema.pre("save",async function(next){
     // check ki pass hua h chnge ya nhi
     if(!this.isModified("password")) return next();
 
-    this.password=bcrypt.hash(this.password,10)
+    this.password=await bcrypt.hash(this.password,10)
     next()
 })
 // custom method in model to check password corect or not
